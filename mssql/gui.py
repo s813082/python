@@ -1,5 +1,5 @@
 import tkinter as tk
-import python.mssql.select_mssql as select_mssql
+import select_mssql as select_mssql
 
 windows = tk.Tk()
 windows.title("Update Ext.")
@@ -17,8 +17,9 @@ show_phone = tk.Text(windows,height=2)
 def getValue():
     show_phone_var = show_phone.get()
     type_Phone_var = type_Phone.get()
+    # rows = select_mssql.SeleteData(show_phone_var)
     if show_phone_var =='':
-        show_phone.insert('insert',type_Phone_var)
+        show_phone.insert('insert',show_phone_var)
         # print(type(show_phone_var)) str
     else:
         show_phone.delete(0,'end')

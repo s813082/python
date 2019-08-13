@@ -15,13 +15,9 @@ def SelectData(phone_number):
         rows = cursor.fetchall()
         
         print(rows)
-        return rows
+        
 
     except:
         conn.rollback()
     conn.close()
-
-
-
-
-SelectData('1204')
+    return rows
