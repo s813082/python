@@ -1,43 +1,41 @@
 import tkinter as tk
+import python.mssql.select_mssql as select_mssql
 
 windows = tk.Tk()
 windows.title("Update Ext.")
-windows.geometry("600x400")
-# 窗口內容開始
-# l = tk.Label(windows,text='Hello world',bg='green',font=('Arial',12),width=15,height=2)
-# l.pack()
+windows.geometry("200x200")
+
+
+
 on_hit = False
-tk.Label(windows, text='想查詢的分機號碼').place(x=50, y= 10)
+title = tk.Label(windows, text='想查詢的分機號碼')
 
 type_Phone = tk.Entry(windows,show = None)
-type_Phone.pack()
 
-var = tk.StringVar()
-l = tk.Label(
-    windows,
-    textvariable=var,
-    font=('Arial',12),
-    width = 15,
-    height = 2
-)
+show_phone = tk.Text(windows,height=2)
 
-def hit_me():
-    global on_hit
-    if on_hit ==False:
-        on_hit = True
-        var.set("you hit me")
+def getValue():
+    show_phone_var = show_phone.get()
+    type_Phone_var = type_Phone.get()
+    if show_phone_var =='':
+        show_phone.insert('insert',type_Phone_var)
+        # print(type(show_phone_var)) str
     else:
-        on_hit = False
-        var.set("")
-        
+        show_phone.delete(0,'end')
+        show_phone.insert('insert',type_Phone_var)
+
 b= tk.Button(windows,
     text='Summit',
     width = 10,
     height = 1,
-    command=hit_me
+    command = getValue
 )
-l.pack()
+
+title.pack()
+type_Phone.pack()
 b.pack()
+show_phone.pack()
+
 
 
 
